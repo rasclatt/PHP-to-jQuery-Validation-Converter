@@ -472,7 +472,6 @@ var ThisForm	=	$("body").find("form");';
 					
 					return false;
 					<?php
-					
 					return $this;
 				}
 		}
