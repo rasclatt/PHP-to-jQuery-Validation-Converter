@@ -5,8 +5,9 @@
 
 **Example of use:**
 
-````
-    $jQValidate	=	new jQueryValidator();
+````php
+
+$jQValidate	=	new jQueryValidator();
     
     // Find form using the "name" attribute
     $jQValidate->UseForm(array("name"=>"create_user","debug"=>false));
