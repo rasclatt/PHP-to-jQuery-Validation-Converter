@@ -47,7 +47,7 @@ Example of use:
     $().ready(function() {
 	
 
-var ThisForm	=	$("form[name='create_user']");ThisForm.validate({
+    var ThisForm	=	$("form[name='create_user']");ThisForm.validate({
 	rules: {
 		name_f: { 
 					required: true,
@@ -111,7 +111,7 @@ var ThisForm	=	$("form[name='create_user']");ThisForm.validate({
 
 
 
-});
-});
+        });
+    });
 
-</script>
+    </script>
