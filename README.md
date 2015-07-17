@@ -36,3 +36,82 @@ Example of use:
 
 		// Optional save to disk
 		$jQValidate->SaveFile('/js/myjavascript.js');
+
+**GIVES YOU:**
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script>
+    $.validator.setDefaults({ ignore: [] });
+    $().ready(function() {
+	
+
+var ThisForm	=	$("form[name='create_user']");ThisForm.validate({
+	rules: {
+		name_f: { 
+					required: true,
+					minlength: 2
+				} ,
+		name_l: { 
+					required: true,
+					minlength: 2
+				} ,
+		address: { 
+					required: true,
+					minlength: 2
+				} ,
+		city: { 
+					required: true,
+					minlength: 2
+				} ,
+		country: { 
+					required: true,
+					minlength: 2
+				} ,
+		state: { 
+					required: true,
+					minlength: 2
+				} 		},
+	 messages: {
+		name_f: { 
+					minlength: 'Requires more characters'
+				} ,
+		name_l: { 
+					minlength: 'Requires more characters'
+				} ,
+		address: { 
+					minlength: 'Requires more characters'
+				} ,
+		city: { 
+					minlength: 'Requires more characters'
+				} ,
+		country: { 
+					minlength: 'Requires more characters'
+				} ,
+		state: { 
+					minlength: 'Requires more characters'
+				} 
+		},
+	submitHandler: function (form) {
+				// Scripts
+									
+					$.ajax({
+							url: 'test.php',
+							data: $(form).serialize(),
+							type: 'post',
+							success: function(response) {
+
+        $("#loadtext").html(response);
+    }
+					});
+					
+					return false;
+							}
+
+
+
+});
+});
+
+</script>
