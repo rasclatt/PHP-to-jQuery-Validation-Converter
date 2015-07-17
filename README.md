@@ -1,4 +1,4 @@
-# PHP to jQuery - Easy Validation Class
+# PHP to jQuery Validation Coverter
 **PHPtojQuery-EasyValidation**
 
 >This class creates (and saves if required) to a jQuery validation script. The class accepts array values to create the jQuery parameters. When complete, you can save your file to disk using the `SaveFile()` method or run it as is via PHP.
