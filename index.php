@@ -1,6 +1,9 @@
 require_once(__DIR__.'/classes/class.jQueryValidator.php');
 
+// Create instance of validator
 $jQValidate	=	new jQueryValidator();
+// This is just for saving the file. Not required.
+$validator = __DIR__.'/temp/validation.js';
 	if(!is_file($validator)) {
 			ob_start(); ?>function(response) {
 						
