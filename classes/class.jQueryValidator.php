@@ -449,7 +449,7 @@ var ThisForm	=	$("body").find("form");';
 			
 			public	function Write()
 				{
-					if($this->uselibs)
+					if($this->uselibs && is_array($this->libraries))
 						echo implode(PHP_EOL,$this->libraries).PHP_EOL;
 				}
 			
@@ -475,5 +475,4 @@ var ThisForm	=	$("body").find("form");';
 					return $this;
 				}
 		}
-		
 ?>
