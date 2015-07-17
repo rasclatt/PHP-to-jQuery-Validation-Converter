@@ -11,9 +11,9 @@ This class creates (and saves if required) to a jQuery validation script. The cl
     // Validate mulitple same-type fields. Let php write the validation code for you
     $jQValidate->SetAttr(	"name_f,name_l,address,city,country,state",
     						// Create the validation rules
-								array("required"=>true,"minlength"=>2),
-								// Create the validation message(s)
-								array("required"=>$txt_req,"minlength"=>"Requires more characters")
+							array("required"=>true,"minlength"=>2),
+							// Create the validation message(s)
+							array("required"=>$txt_req,"minlength"=>"Requires more characters")
 							);
 							
 		// Create a submitHandler to handle successful submissions.
