@@ -7,6 +7,7 @@
 			protected	$validator;
 			protected	$event;
 			protected	$debug;
+			protected	$library_def;
 			
 			const		ERR_ARGS	=	"
 					var ThisForm	=	$(this).serialize();
@@ -48,7 +49,7 @@
 					$this->jObject['rule']			=	array();
 					$this->jObject['msg']			=	array();
 					$this->jObject['submitHandler']	=	"";
-					$this->libraries[]				=	'<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.js"></script>';
+					$this->library_def			=	'<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.js"></script>';
 					
 					$this->uselibs					=	false;
 					$this->validator				=	"validator";
@@ -356,8 +357,10 @@ var ThisForm	=	$("body").find("form");';
 					if($lib != false)
 						$front[]	=	($ssl == true)? str_replace("http://","https://",$lib):$lib;
 					
-					if($this->uselibs)
-						$front[]	=	implode(PHP_EOL,$this->libraries).PHP_EOL;
+					if($this->uselibs) {
+							$this->libraries[]	=	$this->library_def;
+							$front[]	=	implode(PHP_EOL,$this->libraries).PHP_EOL;
+						}
 					
 					if($tags)
 						$front[]	=	"<script>".PHP_EOL;
