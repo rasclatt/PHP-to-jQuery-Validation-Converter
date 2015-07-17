@@ -5,7 +5,7 @@
 
 **Example of use:**
 
-    $jQValidate	=	new jQueryValidator();
+`    $jQValidate	=	new jQueryValidator();
     
     // Find form using the "name" attribute
     $jQValidate->UseForm(array("name"=>"create_user","debug"=>false));
@@ -38,6 +38,7 @@
 
 		// Optional save to disk
 		$jQValidate->SaveFile('/js/myjavascript.js');
+`
 
 **GIVES YOU:**
 
