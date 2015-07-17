@@ -13,7 +13,7 @@ This class creates (and saves if required) to a jQuery validation script. The cl
     						// Create the validation rules
 							array("required"=>true,"minlength"=>2),
 							// Create the validation message(s)
-							array("required"=>$txt_req,"minlength"=>"Requires more characters")
+							array("required"=>'This is a required field!',"minlength"=>"Requires more characters")
 						);
 							
 		// Create a submitHandler to handle successful submissions.
