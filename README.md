@@ -17,7 +17,7 @@ This class creates (and saves if required) to a jQuery validation script. The cl
 						);
 							
 		// Create a submitHandler to handle successful submissions.
-		$submission["event"]				=	"form";
+		$submission["event"]			=	"form";
 		$submission["ajax"]["url"]		=	"test.php";
 		$submission["ajax"]["data"]		=	'$(form).serialize()';
 		$submission["ajax"]["type"]		=	"post";
