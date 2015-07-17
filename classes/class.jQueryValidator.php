@@ -459,12 +459,14 @@ var ThisForm	=	$("body").find("form");';
 					$use_url	=	(!empty($settings['url']))? $settings['url']:false;
 					$use_data	=	(!empty($settings['data']))? $settings['data']:'$('.$event.').serialize()';
 					$use_type	=	(!empty($settings['type']))? $settings['type']:'post';
-					$use_succ	=	(!empty($settings['success']))? $settings['success']:"function(resonse) { console.log(response); }"; ?>
+					$use_succ	=	(!empty($settings['success']))? $settings['success']:"function(resonse) { console.log(response); }";
+					$use_opts	=	(!empty($settings['other']))? $settings['other']:""; ?>
 					
 					$.ajax({
 							<?php if($use_url != false) { ?>url: '<?php echo $use_url; ?>',<?php echo PHP_EOL; } ?>
 							<?php if($use_data != false) { ?>data: <?php echo $use_data; ?>,<?php echo PHP_EOL; } ?>
 							<?php if($use_type != false) { ?>type: '<?php echo $use_type; ?>',<?php echo PHP_EOL; } ?>
+							<?php if(is_array($use_opts)) { foreach($use_opts as $obj => $val) { echo $obj; ?>: '<?php echo $val; ?>',<?php echo PHP_EOL; } } ?>
 							<?php if($use_succ != false) { ?>success: <?php echo $use_succ.PHP_EOL; } ?>
 					});
 					
