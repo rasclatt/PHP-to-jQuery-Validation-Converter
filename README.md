@@ -17,10 +17,10 @@ Example of use:
 							);
 							
 		// Create a submitHandler to handle successful submissions.
-		$submission["event"]		=	"form";
-		$submission["ajax"]["url"]	=	"test.php";
-		$submission["ajax"]["data"]	=	'$(form).serialize()';
-		$submission["ajax"]["type"	=	"post";
+		$submission["event"]			=	"form";
+		$submission["ajax"]["url"]		=	"test.php";
+		$submission["ajax"]["data"]		=	'$(form).serialize()';
+		$submission["ajax"]["type"]		=	"post";
 		$submission["ajax"]["success"]	=	'function(response) {
 			
 			$("#loadtext").html(response);
