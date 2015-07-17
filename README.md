@@ -5,7 +5,8 @@
 
 **Example of use:**
 
-`    $jQValidate	=	new jQueryValidator();
+````
+    $jQValidate	=	new jQueryValidator();
     
     // Find form using the "name" attribute
     $jQValidate->UseForm(array("name"=>"create_user","debug"=>false));
@@ -38,10 +39,10 @@
 
 		// Optional save to disk
 		$jQValidate->SaveFile('/js/myjavascript.js');
-`
+````
 
 **GIVES YOU:**
-
+````
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.js"></script>
@@ -118,3 +119,4 @@
     });
 
     </script>
+````
