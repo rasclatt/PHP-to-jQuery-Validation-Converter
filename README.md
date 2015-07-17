@@ -17,7 +17,7 @@ This class creates (and saves if required) to a jQuery validation script. The cl
 						);
 							
 		// Create a submitHandler to handle successful submissions.
-		$submission["event"]			=	"form";
+		$submission["event"]					=	"form";
 		$submission["ajax"]["url"]		=	"test.php";
 		$submission["ajax"]["data"]		=	'$(form).serialize()';
 		$submission["ajax"]["type"]		=	"post";
@@ -31,8 +31,8 @@ This class creates (and saves if required) to a jQuery validation script. The cl
 		
 		// You can also add jQuery library links
 		echo $jQValidate	->AddLibraries(array('https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js','https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js'))
-		          	// Compile with or without <script> wrappers
-							->Compile(array("add_tags"=>true,"add_ready"=>true,"validate_hidden"=>true));
+		          				// Compile with or without <script> wrappers
+											->Compile(array("add_tags"=>true,"add_ready"=>true,"validate_hidden"=>true));
 
 		// Optional save to disk
 		$jQValidate->SaveFile('/js/myjavascript.js');
