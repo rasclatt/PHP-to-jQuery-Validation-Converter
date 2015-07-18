@@ -380,7 +380,7 @@ var ThisForm	=	$("body").find("form");';
 					if((is_array($this->jObject) && !empty($this->jObject)) && isset($this->jObject['fconstruct'])) {
 							
 							$creturn	=	",".PHP_EOL;
-							$final[]	=	$this->jObject['fconstruct'];
+							$final[]	=	PHP_EOL.$this->jObject['fconstruct'];
 							
 							if(isset($this->jObject['rule']) && !empty($this->jObject['rule'])) {
 									$final[]	=	"\t"."rules: {".PHP_EOL;
