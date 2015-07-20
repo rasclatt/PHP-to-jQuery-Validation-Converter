@@ -59,6 +59,9 @@
 			
 			public	function SetAttr($name = false, $rule = false, $message = false)
 				{
+					// Set default as required if no rules supplied
+					$rule	=	($rule != false)? $rule : array("required"=>true);
+					
 					if(strpos($name,",") !== false) {
 							$same		=	explode(",",$name);
 							foreach($same as $nameval) {
@@ -68,12 +71,9 @@
 							return $this;
 						}
 					
-					if(is_array($rule)) {
+					if(is_array($rule) && !empty($rule)) {
 							$multi		=	(count($rule) > 1)? true:false;
-							if($multi)
-								$this->jObject['rule'][$name]	=	 "\t\t$name: { ";
-							else
-								$this->jObject['rule'][$name]	=	"\t\t";
+							$this->jObject['rule'][$name]	=	 "\t\t$name: { ";
 							
 							foreach($rule as $fname => $rInst) {
 									if(is_bool($rInst))
@@ -83,38 +83,26 @@
 									elseif(is_numeric($rInst) && strpos($rInst,'.') !== false)
 										$rInst	=	"'$rInst'";
 									
-									if($multi) {
-											$this->jObject['rule'][$name]		.=	PHP_EOL."\t\t\t\t\t".$fname.": ".$rInst.",";
-											if(isset($message[$fname]) && !empty($message[$fname])) {
-													if(!isset($msg_save['msg'][$name]))
-														$msg_save['msg'][$name]	=	PHP_EOL."\t\t\t\t\t".$fname.": '".$message[$fname]."',";
-													else
-														$msg_save['msg'][$name]	.=	PHP_EOL."\t\t\t\t\t".$fname.": '".$message[$fname]."',";
-												}
-										}
-									else {
-											$this->jObject['rule'][$name]		.=	PHP_EOL."\t\t".$name.": ".$rInst;
-											if(isset($message[$name]) && !empty($message[$name])) {
-													if(!isset($msg_save['msg'][$name]))
-														$msg_save['msg'][$name]	=	PHP_EOL."\t\t".$name.": '".$message[$name]."'";
-													else
-														$msg_save['msg'][$name]	.=	PHP_EOL."\t\t".$name.": '".$message[$name]."'";
-												}
+									$this->jObject['rule'][$name]		.=	PHP_EOL."\t\t".$fname.": ".$rInst.",";
+	
+									if(!empty($message[$fname])) {
+											if(!isset($msg_save['msg'][$name]))
+												$msg_save['msg'][$name]	=	PHP_EOL."\t\t\t\t".$fname.": '".$message[$fname]."',";
+											else
+												$msg_save['msg'][$name]	.=	PHP_EOL."\t\t\t\t".$fname.": '".$message[$fname]."',";
 										}
 								}
 								
 							if(isset($this->jObject['rule'][$name]))
 								$this->jObject['rule'][$name]	=	rtrim($this->jObject['rule'][$name],",");
 							
-							if($multi)
-								$this->jObject['rule'][$name]	.=	PHP_EOL."\t\t\t\t} ";
+							$this->jObject['rule'][$name]	.=	PHP_EOL."\t\t\t\t} ";
 								
 							if(isset($msg_save['msg'][$name])) {
-									$this->jObject['msg'][$name]	=	($multi)? "\t\t$name: { " : "\t\t";
+									$this->jObject['msg'][$name]	=	"\t\t$name: { ";
 									$this->jObject['msg'][$name]	.=	rtrim($msg_save['msg'][$name],",");
-									$this->jObject['msg'][$name]	.=	($multi)? PHP_EOL."\t\t\t\t} ":"";
+									$this->jObject['msg'][$name]	.=	PHP_EOL."\t\t\t\t} ";
 								}
-							
 						}
 						
 					return $this;
