@@ -354,7 +354,7 @@ var ThisForm	=	$("body").find("form");';
 						$front[]	=	"<script>".PHP_EOL;
 						
 					if($compat)
-						$final[]	=	"<![CDATA[".PHP_EOL;
+						$final[]	=	"//<![CDATA[".PHP_EOL;
 					
 					if($hidden)
 						$final[]	=	"$.validator.setDefaults({ ignore: [] });".PHP_EOL;
@@ -417,7 +417,7 @@ var ThisForm	=	$("body").find("form");';
 					$final[]		=	$append;
 					
 					if($compat)
-						$final[]	=	"]]>".PHP_EOL;
+						$final[]	=	"//]]>".PHP_EOL;
 						
 					if($tags)
 						$back[]	=	PHP_EOL."</script>".PHP_EOL;
