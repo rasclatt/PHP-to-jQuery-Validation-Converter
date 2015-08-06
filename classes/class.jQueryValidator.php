@@ -8,9 +8,12 @@
 			protected	$event;
 			protected	$debug;
 			protected	$library_def;
+			protected	$name_jQlib;
+			
+			const		WP_COMPAT	=	"jQuery";
 			
 			const		ERR_ARGS	=	"
-					var ThisForm	=	$(this).serialize();
+					var ThisForm	=	~/name_jQlib/~(this).serialize();
 					var	KeyPairs	=	ThisForm.split('&');
 					var result		=	{};
 					
@@ -44,8 +47,9 @@
 					console.log(error_count);
 					console.log(this.Errors);";
 			
-			public	function __construct()
+			public	function __construct($name_jQlib = '$')
 				{
+					$this->name_jQlib			=	$name_jQlib;
 					$this->jObject['rule']			=	array();
 					$this->jObject['msg']			=	array();
 					$this->jObject['submitHandler']	=	"";
@@ -117,8 +121,8 @@
 					
 					$debugger		=	'
 // Count ids from SO->http://stackoverflow.com/questions/482763/
-$(\'[id]\').each(function(){
-	var ids = $(\'[id="\'+this.id+\'"]\');
+'.$this->name_jQlib.'(\'[id]\').each(function(){
+	var ids = '.$this->name_jQlib.'(\'[id="\'+this.id+\'"]\');
   
 	if(ids.length > 1 && ids[0] == this) {
 		if(this.id == "~[value]~") {
@@ -132,7 +136,7 @@ $(\'[id]\').each(function(){
 					foreach($find as $use => $value) {
 							if($use == 'id' && $value != false) {
 									$script	=	'
-var	ThisForm	=	$("#'.$value.'");';
+var	ThisForm	=	'.$this->name_jQlib.'("#'.$value.'");';
 							
 									if($this->debug === true)
 											$script	.=	preg_replace('/(~\[value\]~)/',$value,$debugger);
@@ -141,7 +145,7 @@ var	ThisForm	=	$("#'.$value.'");';
 								}
 							elseif($use == 'name' && $value != false) {
 									$script	=	'
-var ThisForm	=	$("form[name=\''.$value.'\']");';
+var ThisForm	=	'.$this->name_jQlib.'("form[name=\''.$value.'\']");';
 
 									if($this->debug === true)
 											$script	.=	preg_replace('/(~\[value\]~)/',$value,str_replace('[id','[name',$debugger));
@@ -149,7 +153,7 @@ var ThisForm	=	$("form[name=\''.$value.'\']");';
 								}
 							elseif($use == 'class' && $value != false) {
 									$script	=	'
-var ThisForm	=	$(".'.$value.'");';
+var ThisForm	=	'.$this->name_jQlib.'(".'.$value.'");';
 
 									if($this->debug === true)
 											$script	.=	preg_replace('/(~\[value\]~)/',$value,str_replace('[id','[class',$debugger));
@@ -357,10 +361,10 @@ var ThisForm	=	$("body").find("form");';
 						$final[]	=	"//<![CDATA[".PHP_EOL;
 					
 					if($hidden)
-						$final[]	=	"$.validator.setDefaults({ ignore: [] });".PHP_EOL;
+						$final[]	=	$this->name_jQlib.".validator.setDefaults({ ignore: [] });".PHP_EOL;
 					
 					if($ready)
-						$final[]	=	"$().ready(function() {".PHP_EOL;
+						$final[]	=	$this->name_jQlib."().ready(function() {".PHP_EOL;
 						
 					if(!$script)
 						$final[]	=	"\t".$script.PHP_EOL;
@@ -376,16 +380,16 @@ var ThisForm	=	$("body").find("form");';
 									$final[]	=	"\t\t"."}";
 								}
 							
-							if(isset($this->jObject['msg']) && !empty($this->jObject['msg'])) {
+							if(!empty($this->jObject['msg'])) {
 									$final[]	=	$creturn."\t messages: {".PHP_EOL;
 									$final[]	=	implode($creturn,$this->jObject['msg']).PHP_EOL;
 									$final[]	=	"\t\t"."}";
 								}
 							
-							$handler['submit']	=	(isset($this->jObject['submitHandler']) && !empty($this->jObject['submitHandler']))? true:false;
-							$handler['invalid']	=	(isset($this->jObject['invalidHandler']) && !empty($this->jObject['invalidHandler']))? true:false;
-							$handler['errors']	=	(isset($this->jObject['showErrors']) && !empty($this->jObject['showErrors']))? true:false;
-							$handler['custom']	=	(isset($this->jObject['AddHandler']) && !empty($this->jObject['AddHandler']))? true:false;
+							$handler['submit']	=	(!empty($this->jObject['submitHandler']))? true:false;
+							$handler['invalid']	=	(!empty($this->jObject['invalidHandler']))? true:false;
+							$handler['errors']	=	(!empty($this->jObject['showErrors']))? true:false;
+							$handler['custom']	=	(!empty($this->jObject['AddHandler']))? true:false;
 							
 							$formathandler = function($value) {
 									return "\t".$value.PHP_EOL;
