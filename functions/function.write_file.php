@@ -9,7 +9,7 @@
 		{
 			$settings['content']	=	(!empty($settings['content']))? $settings['content']: false;
 			$settings['save_to']	=	(!empty($settings['save_to']))? $settings['save_to']: false;
-			$settings['type']		=	(!empty($settings['type']))? $settings['type']: 'a';
+			$settings['type']	=	(!empty($settings['type']))? $settings['type']: 'a';
 			
 			if($settings['save_to'] == false)
 				return;
