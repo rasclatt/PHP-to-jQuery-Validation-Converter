@@ -54,7 +54,7 @@ if(!is_file($validator)) {
 	//	$jQValidate->SaveFile(array("save_dir"=>__DIR__.'/js/',"save_name"=>'validate.js'));
 	}
 else
-	echo $jQValidate	->AddLibraries(array("/js/validate.js"))
+	echo $jQValidate	->AddLibraries(array($validator))
 						->Write();
 ?>
 <style>
