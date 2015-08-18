@@ -434,6 +434,7 @@ var ThisForm	=	$("body").find("form");';
 			public	function SaveFile($saveto = false)
 				{
 					$this->content	=	preg_replace('!<script [.*]{1,}></script>!',"",$this->content);
+					include_once(__DIR__.'/class.WriteToFile.php');
 					$write	=	new WriteToFile();
 					$write	->AddInput(array("content"=>$this->content,"save_to"=>$saveto))
 							->SaveDocument();
