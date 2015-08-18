@@ -433,7 +433,7 @@ var ThisForm	=	$("body").find("form");';
 			
 			public	function SaveFile($settings = false)
 				{
-					$dir			=	(!empty($settings['save_dir']))? $settings['save_dir'] : false;
+					$dir		=	(!empty($settings['save_dir']))? $settings['save_dir'] : false;
 					$filename	=	(!empty($settings['save_name']))? $settings['save_name'] : "myjavascript.js";
 					
 					$this->content	=	preg_replace('!<script [.*]{1,}></script>!',"",$this->content);
