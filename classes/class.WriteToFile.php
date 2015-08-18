@@ -5,7 +5,8 @@
 			
 			public	function __construct()
 				{
-					
+					// Include the file writing function
+					include_once(__DIR__.'/../functions/function.write_file.php');
 				}
 			
 			public	function AddInput($payload =  array())
