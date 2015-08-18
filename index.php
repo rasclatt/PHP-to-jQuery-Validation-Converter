@@ -51,7 +51,7 @@ if(!is_file($validator)) {
 		echo $jQValidate	->AddLibraries(array('https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js','https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js'))
 							->Compile(array("add_tags"=>true,"add_ready"=>true,"validate_hidden"=>true));
 		
-	//	$jQValidate->SaveFile(CLIENT_DIR.'/apps/infotrax/js/validate.js');
+	//	$jQValidate->SaveFile(array("save_dir"=>__DIR__.'/js/',"save_name"=>'validate.js'));
 	}
 else
 	echo $jQValidate	->AddLibraries(array("/client_assets/apps/infotrax/js/validate.js"))
