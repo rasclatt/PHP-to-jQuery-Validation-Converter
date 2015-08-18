@@ -39,7 +39,7 @@
 		          			->Compile(array("add_tags"=>true,"add_ready"=>true,"validate_hidden"=>true));
 
 		// Optional save to disk
-		$jQValidate->SaveFile('/js/myjavascript.js');
+		$jQValidate->SaveFile(array("save_dir"=>'/js/',"save_name"=>'myjavascript.js'));
 ````
 
 **GIVES YOU:**
