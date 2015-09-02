@@ -1,4 +1,12 @@
 <?php
+/**
+ * Create jQuery Validation script
+ * https://github.com/rasclatt/PHP-to-jQuery-Validation-Converter/
+ * Licensed under the GNU GENERAL PUBLIC LICENSE
+ * @author Rasclatt <rasclatt@me.com>
+ * @version 0.0.1
+ */
+ 
 	class	jQueryValidator
 		{
 			protected	$jObject;
